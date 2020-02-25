@@ -1,3 +1,5 @@
 runtime: custom
 env: flexible
 
+resources:
+  memory_gb: 4
