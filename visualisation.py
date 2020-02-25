@@ -6,7 +6,7 @@ import datetime
 from PIL import Image
 
 from make_dataset import articles_database
-from TFIDF import spacy_tfidf 
+#from TFIDF import spacy_tfidf 
 
 
 def title_cleaner(news_title):
@@ -30,7 +30,7 @@ def summary_type_chooser(i):
       
     # use TFIDF
     else:
-        return spacy_tfidf(i[1][4])  
+        return i[1][6]# spacy_tfidf(i[1][4])  
 
 
 def bert_join(df):
@@ -101,13 +101,13 @@ all_summaries_needed = ['Compare all', 'Rate summaries']
 summary_selector = st.sidebar.radio(
     "Summary type: ",
     ('Full article',
-    'TFIDF', 
+    #'TFIDF', 
     'BERT', 
     'Compare all',
     'Rate summaries'))
 
-if summary_selector == 'TFIDF' or summary_selector in all_summaries_needed:
-    tfidf_proportion = st.sidebar.slider('TFIDF Summary percentrage', min_value=0, max_value=100, value=30) /100
+#if summary_selector == 'TFIDF' or summary_selector in all_summaries_needed:
+ #   tfidf_proportion = st.sidebar.slider('TFIDF Summary percentrage', min_value=0, max_value=100, value=30) /100
 
 if summary_selector != 'Rate summaries':
     num_results = st.sidebar.number_input('Max number results:', min_value=1, max_value=200, value=10)
@@ -197,7 +197,7 @@ if st.sidebar.button('Search'):
 
 
             if summary_selector == 'TFIDF' or summary_selector in all_summaries_needed :
-                tfidf_summary = spacy_tfidf(i[1][4], proportion=tfidf_proportion)
+                tfidf_summary = i[1][6] #spacy_tfidf(i[1][4], proportion=tfidf_proportion)
                 summary_output = tfidf_summary
             
             if summary_selector == 'BERT' or summary_selector in all_summaries_needed :
