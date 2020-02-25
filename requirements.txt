@@ -9,3 +9,4 @@ beautifulsoup4==4.8.2
 progressbar2==3.42.0
 atlas==0.27.0
 streamlit==0.55.0
+python-dateutil==2.8.0
