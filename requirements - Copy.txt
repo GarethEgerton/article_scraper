@@ -1,4 +1,4 @@
-requests==2.22.0
+requests==2.31.0
 bert_extractive_summarizer==0.3.0
 joblib==0.14.1
 spacy==2.2.3
